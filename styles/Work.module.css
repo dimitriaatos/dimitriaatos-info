@@ -1,0 +1,45 @@
+.lists {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.collaborator {
+	background-color: lightgray;
+	border-radius: 0.2rem;
+	padding: 0.2rem;
+	margin: 0 0.1rem;
+}
+
+@media (hover: hover) {
+	.collaborator:hover {
+		background-color: gray;
+	}
+}
+
+.listTitle {
+	font-weight: 600;
+}
+
+.modal {
+	padding: 1rem;
+}
+
+.workTitle {
+	user-select: text;
+	cursor: text;
+}
+
+.pageTitle {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.pageTitle h1 {
+	cursor: inherit;
+}
+
+.image {
+	width: 100%;
+	height: auto;
+}

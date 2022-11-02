@@ -1,0 +1,52 @@
+.container {
+	width: 100%;
+}
+
+.works {
+	list-style: none;
+	display: flex;
+	gap: 1rem;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+}
+
+.categoriesLine {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 1rem;
+}
+
+.categories {
+	display: flex;
+	gap: 0.8rem;
+	overflow-x: scroll;
+}
+
+.categoryButton {
+	border: 0.1rem gray solid;
+	color: gray;
+	background-color: white;
+	padding: 0.5rem;
+	cursor: pointer;
+	border-radius: 2rem;
+	justify-self: flex-start;
+	min-width: max(min-content, 3rem);
+	font-size: 0.8rem;
+	transition: background-color 200ms;
+}
+
+.categoryButtonSelected {
+	color: white;
+	background-color: gray;
+}
+
+@media (hover: hover) {
+	.categoryButton:hover {
+		background-color: rgb(246 246 246);
+	}
+
+	.categoryButtonSelected:hover {
+		background-color: rgb(151 151 151);
+		border-color: rgb(151 151 151);
+	}
+}

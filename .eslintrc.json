@@ -13,7 +13,9 @@
 	"rules": {
 		"react/react-in-jsx-scope": "off",
 		"react/prop-types": "off",
-		"no-unused-vars": "warn"
+		"no-unused-vars": "warn",
+		"import/no-anonymous-default-export": "off",
+		"react/display-name": "off"
 	},
 	"parserOptions": {
 		"sourceType": "module"

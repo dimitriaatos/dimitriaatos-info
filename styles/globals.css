@@ -102,3 +102,17 @@ p {
 		background: black;
 	}
 } */
+
+.dashedLink {
+	border-bottom: 1px dashed black;
+}
+
+.dashedLink a {
+	text-decoration: none;
+}
+
+@media (hover: hover) {
+	.dashedLink:hover {
+		border-bottom-style: solid;
+	}
+}

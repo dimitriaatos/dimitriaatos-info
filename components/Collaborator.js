@@ -16,7 +16,7 @@ export default ({ collaborator }) => {
 			{contact.length ? (
 				<button
 					key={id}
-					className={styles.collaboratorButton}
+					className={[styles.collaboratorButton, 'dashedLink'].join(' ')}
 					onClick={() => {
 						setSelectedCollaborator(collaborator)
 					}}

@@ -4,4 +4,12 @@ const charShift = (string, offset = 1) => {
 		.join('')
 }
 
-export { charShift }
+const snakeCaseToText = (string) => {
+	return string.replaceAll('_', ' ')
+}
+
+const capitalizeFirstLetter = (string) => {
+	return string.charAt(0).toUpperCase() + string.slice(1)
+}
+
+export { charShift, snakeCaseToText, capitalizeFirstLetter }

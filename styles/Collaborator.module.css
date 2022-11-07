@@ -4,14 +4,7 @@
 	padding: 0.2rem;
 	margin: 0.1rem; */
 	white-space: nowrap;
-	border-bottom: 1px dashed black;
 	margin: 0 0.2rem;
-}
-
-@media (hover: hover) {
-	.collaboratorButton:hover {
-		border-bottom-style: solid;
-	}
 }
 
 .collaborator {

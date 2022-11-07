@@ -47,8 +47,13 @@ export default ({ about, categories, works }) => {
 					<Works {...{ categories, works, fallbackImage }} />
 				</div>
 				<div>
-					<a href={assetsUrl + cv.url} target="_blank" rel="noreferrer">
-						<button className={styles.cvButton}>Curriculum Vitae</button>
+					<a
+						href={assetsUrl + cv.url}
+						className={styles.cvButton}
+						target="_blank"
+						rel="noreferrer"
+					>
+						<div>Curriculum Vitae</div>
 					</a>
 				</div>
 			</main>

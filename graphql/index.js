@@ -2,7 +2,7 @@ import { gql } from '@apollo/client'
 
 const GET_WORKS = gql`
 	query GetWorks {
-		works {
+		works(pagination: { pageSize: 20 }) {
 			data {
 				id
 				attributes {

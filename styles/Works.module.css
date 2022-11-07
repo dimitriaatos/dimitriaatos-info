@@ -4,10 +4,14 @@
 
 .works {
 	list-style: none;
-	display: flex;
+
+	/* display: flex;
 	gap: 1rem;
 	justify-content: flex-start;
-	flex-wrap: wrap;
+	flex-wrap: wrap; */
+
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(calc(7rem + 5vmin), 100%), 1fr));
 }
 
 .categoriesLine {

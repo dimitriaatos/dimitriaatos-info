@@ -10,6 +10,9 @@ import Image from 'next/image'
 import { GET_ABOUT, GET_WORKS, GET_WORK_BY_SLUG } from '../../../graphql'
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 import Collaborator from '../../../components/Collaborator'
+import { capitalizeFirstLetter, snakeCaseToText } from '../../../helpers'
+
+const getFormatted = (key) => capitalizeFirstLetter(snakeCaseToText(key))
 
 export default ({ work, about }) => {
 	const { title, description } = work.data.attributes
@@ -81,7 +84,7 @@ export default ({ work, about }) => {
 					</div>
 				)}
 				{!!withContribution.length && (
-					<div style={{ display: 'block' }}>
+					<ul style={{ display: 'block', listStyleType: '"- "' }}>
 						<div className={styles.listTitle}>Credits</div>
 						{withContribution.map((credit) => {
 							const {
@@ -89,8 +92,10 @@ export default ({ work, about }) => {
 								attributes: { title },
 							} = credit.contribution.data
 							return (
-								<div key={contributionId}>
-									<span>{`${title}: `}</span>
+								<li key={contributionId}>
+									<span
+										className={styles.creditTitle}
+									>{`${capitalizeFirstLetter(title)}: `}</span>
 									{credit.collaborators.data.map(
 										(collaborator, index, { length }) => {
 											return (
@@ -100,14 +105,15 @@ export default ({ work, about }) => {
 														{...{ collaborator }}
 														onClick={console.log}
 													/>
+													{length != index + 1 && <span> / </span>}
 												</>
 											)
 										}
 									)}
-								</div>
+								</li>
 							)
 						})}
-					</div>
+					</ul>
 				)}
 				{!!technologies.length && (
 					<div style={{ textAlign: 'left', display: 'block' }}>
@@ -124,9 +130,9 @@ export default ({ work, about }) => {
 							{links.map(({ id, link, title }) => {
 								console.log(id, link, title)
 								return (
-									<li key={id}>
+									<li key={id} className="dashedLink">
 										<a href={link} target="_blank" rel="noreferrer">
-											{title}
+											{getFormatted(title)}
 										</a>
 									</li>
 								)

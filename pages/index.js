@@ -2,18 +2,21 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Works from '../components/Works'
 import styles from '../styles/Index.module.css'
-import { getCollection } from '../helpers'
-import { assetsUrl } from '../constants'
+import { assetsUrl, graphqlUri } from '../constants'
 import ReactMarkdown from 'react-markdown'
 import Contact from '../components/Contact'
+import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { GET_ABOUT, GET_CATEGORIES, GET_WORKS } from '../graphql/index'
 
 export default ({ about, categories, works }) => {
 	const {
-		attributes: { title, description, contact },
+		data: {
+			attributes: { title, description, contact },
+		},
 	} = about
-	const photo = about.attributes.photo.data.attributes
-	const fallbackImage = about.attributes.fallbackImage.data.attributes
-	const cv = about.attributes.cv.data.attributes
+	const photo = about.data.attributes.photo.data.attributes
+	const fallbackImage = about.data.attributes.fallbackImage.data.attributes
+	const cv = about.data.attributes.cv.data.attributes
 	const thumbnail = photo.formats.thumbnail
 
 	return (
@@ -58,8 +61,34 @@ export default ({ about, categories, works }) => {
 }
 
 export const getStaticProps = async () => {
-	const data = await getCollection('about', 'categories', 'works')
+	const client = new ApolloClient({
+		uri: graphqlUri,
+		cache: new InMemoryCache(),
+	})
+
+	const {
+		data: { about },
+	} = await client.query({
+		query: GET_ABOUT,
+	})
+
+	const {
+		data: { categories },
+	} = await client.query({
+		query: GET_CATEGORIES,
+	})
+
+	const {
+		data: { works },
+	} = await client.query({
+		query: GET_WORKS,
+	})
+
 	return {
-		props: data,
+		props: {
+			about,
+			categories,
+			works,
+		},
 	}
 }

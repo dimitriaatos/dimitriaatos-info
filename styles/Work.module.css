@@ -2,27 +2,12 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
-}
-
-.collaborator {
-	background-color: lightgray;
-	border-radius: 0.2rem;
-	padding: 0.2rem;
-	margin: 0 0.1rem;
-}
-
-@media (hover: hover) {
-	.collaborator:hover {
-		background-color: gray;
-	}
+	flex-wrap: wrap;
+	overflow: scroll;
 }
 
 .listTitle {
 	font-weight: 600;
-}
-
-.modal {
-	padding: 1rem;
 }
 
 .workTitle {
@@ -42,4 +27,8 @@
 .image {
 	width: 100%;
 	height: auto;
+}
+
+.description {
+	overflow: scroll;
 }

@@ -1,5 +1,5 @@
-const apiUrl = 'https://cms.dimitriaatos.info/api'
+const graphqlUri = 'https://cms.dimitriaatos.info/graphql'
 
 const assetsUrl = 'https://cms.dimitriaatos.info'
 
-export { apiUrl, assetsUrl }
+export { assetsUrl, graphqlUri }

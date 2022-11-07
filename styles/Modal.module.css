@@ -3,12 +3,16 @@
 	max-height: 300px;
 	width: 100%;
 	height: 100%;
-	border-radius: 0.2rem;
+	border-radius: 0.5rem;
 	border: 1px gray solid;
 	background-color: white;
 	opacity: 1;
 	z-index: 1000;
 	box-shadow: 1px 1px 40px gray;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-direction: column;
 }
 
 .backdrop {

@@ -1,0 +1,22 @@
+.collaboratorButton {
+	/* background-color: lightgray;
+	border-radius: 0.2rem;
+	padding: 0.2rem;
+	margin: 0.1rem; */
+	white-space: nowrap;
+	border-bottom: 1px dashed black;
+	margin: 0 0.2rem;
+}
+
+@media (hover: hover) {
+	.collaboratorButton:hover {
+		border-bottom-style: solid;
+	}
+}
+
+.collaborator {
+	padding: 0.2rem 0;
+	margin: 0.1rem 0;
+
+	/* white-space: nowrap; */
+}

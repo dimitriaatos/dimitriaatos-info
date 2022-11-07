@@ -5,7 +5,7 @@ import { useState } from 'react'
 export default ({ works, categories, fallbackImage }) => {
 	const [selectedCategories, setSelectedCategories] = useState({
 		state: null,
-		filtered: [...works],
+		filtered: [...works.data],
 	})
 
 	const filterWorks = (category = {}) => {
@@ -13,12 +13,12 @@ export default ({ works, categories, fallbackImage }) => {
 			if (category.id == prev.state) {
 				return {
 					state: null,
-					filtered: [...works],
+					filtered: [...works.data],
 				}
 			}
 			return {
 				state: category.id || null,
-				filtered: works.filter((work) => {
+				filtered: works.data.filter((work) => {
 					return work.attributes.categories.data.some(
 						(workCategory) => workCategory.id == category.id
 					)
@@ -42,7 +42,7 @@ export default ({ works, categories, fallbackImage }) => {
 					>
 						All
 					</button>
-					{categories.map((category) => (
+					{categories.data.map((category) => (
 						<button
 							className={[
 								styles.categoryButton,
@@ -61,7 +61,7 @@ export default ({ works, categories, fallbackImage }) => {
 			<ul className={styles.works}>
 				{(selectedCategories.filtered.length
 					? selectedCategories.filtered
-					: works
+					: works.data
 				).map((work) => {
 					return (
 						<li key={work.id}>

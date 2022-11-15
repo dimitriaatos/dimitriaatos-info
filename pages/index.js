@@ -9,11 +9,7 @@ import { ApolloClient, InMemoryCache } from '@apollo/client'
 import { GET_ABOUT, GET_CATEGORIES, GET_WORKS } from '../graphql/index'
 
 export default ({ about, categories, works }) => {
-	const {
-		data: {
-			attributes: { title, description, contact },
-		},
-	} = about
+	const { title, description, contact } = about.data.attributes
 	const photo = about.data.attributes.photo.data.attributes
 	const fallbackImage = about.data.attributes.fallbackImage.data.attributes
 	const cv = about.data.attributes.cv.data.attributes

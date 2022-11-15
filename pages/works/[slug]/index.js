@@ -15,12 +15,9 @@ import { capitalizeFirstLetter, snakeCaseToText } from '../../../helpers'
 const getFormatted = (key) => capitalizeFirstLetter(snakeCaseToText(key))
 
 export default ({ work, about }) => {
-	const { title, description } = work.data.attributes
-	const technologies = work?.data?.attributes?.technologies
-	const credits = work?.data?.attributes?.credits
-	const image = work?.data?.attributes?.image
+	const { title, description, technologies, credits, image, links, embed } =
+		work?.data?.attributes || {}
 	const format = image?.data?.attributes?.formats?.medium
-	const links = work?.data?.attributes?.links
 
 	const { withContribution, collaborators } = useMemo(() => {
 		return credits.reduce(
@@ -51,7 +48,7 @@ export default ({ work, about }) => {
 				</Link>
 				<div>
 					<h2 className={styles.workTitle}>{title}</h2>
-					<EmbedVideo link={work?.data?.attributes?.embed} />
+					{embed && <EmbedVideo link={embed} />}
 					{image.data && (
 						<Image
 							className={styles.image}
@@ -72,12 +69,8 @@ export default ({ work, about }) => {
 						{collaborators.data.map((collaborator, index, { length }) => {
 							return (
 								<>
-									<Collaborator
-										key={collaborator.id}
-										{...{ collaborator }}
-										onClick={console.log}
-									/>
-									{length != index + 1 && <span> / </span>}
+									<Collaborator key={collaborator.id} {...{ collaborator }} />
+									{length > index + 1 && <span> | </span>}
 								</>
 							)
 						})}
@@ -103,7 +96,6 @@ export default ({ work, about }) => {
 													<Collaborator
 														key={collaborator.id}
 														{...{ collaborator }}
-														onClick={console.log}
 													/>
 													{length != index + 1 && <span> / </span>}
 												</>
@@ -128,7 +120,6 @@ export default ({ work, about }) => {
 						<span className={styles.listTitle}>Links: </span>
 						<ul>
 							{links.map(({ id, link, title }) => {
-								console.log(id, link, title)
 								return (
 									<li key={id} className="dashedLink">
 										<a href={link} target="_blank" rel="noreferrer">

@@ -4,7 +4,14 @@ const embedMap = {
 	'vimeo.com': (url) =>
 		`https://player.vimeo.com/video${url.pathname}?h=6c62652a1b&byline=0&portrait=0`,
 	'soundcloud.com': (url) =>
-		`https://w.soundcloud.com/player/?url=${url.href}&color=%237c7973&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true`,
+		`https://w.soundcloud.com/player/?${new URLSearchParams({
+			url: url.href,
+			color: '7c7973',
+			auto_play: false,
+			hide_related: false,
+			show_comments: true,
+			show_teaser: true,
+		}).toString()}`,
 }
 
 const getIframeSrc = (link) => {
@@ -13,8 +20,6 @@ const getIframeSrc = (link) => {
 }
 
 export default ({ link }) => {
-	if (!link) return null
-
 	return (
 		<iframe
 			width="100%"
@@ -22,10 +27,17 @@ export default ({ link }) => {
 				aspectRatio: '16 / 9',
 			}}
 			src={getIframeSrc(link)}
-			title="YouTube video player"
 			frameBorder="0"
 			scrolling="no"
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen;"
-		></iframe>
+			allow={[
+				'accelerometer',
+				'autoplay',
+				'clipboard-write',
+				'encrypted-media',
+				'gyroscope',
+				'picture-in-picture',
+				'fullscreen',
+			].join('; ')}
+		/>
 	)
 }

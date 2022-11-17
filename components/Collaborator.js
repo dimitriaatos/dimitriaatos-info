@@ -15,7 +15,9 @@ export default ({ collaborator }) => {
 					target="_blank"
 					rel="noreferrer"
 				>
-					{firstNames} {lastNames}
+					<span>
+						{firstNames} {lastNames}
+					</span>
 				</a>
 			) : (
 				<span key={id} className={styles.collaborator}>

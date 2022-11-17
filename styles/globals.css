@@ -89,15 +89,16 @@ header {
 }
 
 .dashedLink {
-	border-bottom: 1px dashed black;
-}
-
-.dashedLink a {
 	text-decoration: none;
 }
 
+.dashedLink span {
+	display: inline-block;
+	border-bottom: 1px dashed black;
+}
+
 @media (hover: hover) {
-	.dashedLink:hover {
+	.dashedLink span:hover {
 		border-bottom-style: solid;
 	}
 }

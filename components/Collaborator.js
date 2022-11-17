@@ -8,17 +8,11 @@ export default ({ collaborator }) => {
 	return (
 		<>
 			{contact.length ? (
-				<a
-					key={id}
-					className={[styles.collaboratorButton, 'dashedLink'].join(' ')}
-					href={contact[0].link}
-					target="_blank"
-					rel="noreferrer"
-				>
-					<span>
+				<span className={[styles.collaboratorButton, 'dashedLink'].join(' ')}>
+					<a key={id} href={contact[0].link} target="_blank" rel="noreferrer">
 						{firstNames} {lastNames}
-					</span>
-				</a>
+					</a>
+				</span>
 			) : (
 				<span key={id} className={styles.collaborator}>
 					{firstNames} {lastNames}

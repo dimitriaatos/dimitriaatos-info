@@ -5,6 +5,9 @@ body {
 	font-size: 15px;
 	font-family: "Courier New", monospace;
 	cursor: default;
+}
+
+img {
 	user-select: none;
 }
 
@@ -89,16 +92,16 @@ header {
 }
 
 .dashedLink {
-	text-decoration: none;
-}
-
-.dashedLink span {
 	display: inline-block;
 	border-bottom: 1px dashed black;
 }
 
+.dashedLink a {
+	text-decoration: none;
+}
+
 @media (hover: hover) {
-	.dashedLink span:hover {
+	.dashedLink:hover {
 		border-bottom-style: solid;
 	}
 }

@@ -3,6 +3,7 @@
 	padding: 1rem;
 	flex-wrap: wrap;
 	justify-content: center;
+	user-select: none;
 }
 
 .contact a {

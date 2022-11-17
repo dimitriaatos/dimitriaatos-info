@@ -25,6 +25,7 @@ export default ({ link }) => {
 			width="100%"
 			style={{
 				aspectRatio: '16 / 9',
+				userSelect: 'none',
 			}}
 			src={getIframeSrc(link)}
 			frameBorder="0"

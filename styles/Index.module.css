@@ -38,6 +38,7 @@
 	border: 0.1rem solid var(--cv-button-color);
 	padding: 0.5rem;
 	border-radius: 0.2rem;
+	user-select: none;
 }
 
 .main h2 {

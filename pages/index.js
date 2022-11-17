@@ -39,7 +39,7 @@ export default ({ about, categories, works }) => {
 					<ReactMarkdown>{description}</ReactMarkdown>
 				</div>
 				<div>
-					<h2>Works</h2>
+					<h2 style={{ userSelect: 'none' }}>Works</h2>
 					<Works {...{ categories, works, fallbackImage }} />
 				</div>
 				<div className={styles.centeredContainer}>

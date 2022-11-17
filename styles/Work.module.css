@@ -8,16 +8,19 @@
 
 .listTitle {
 	font-weight: 600;
+	margin-right: 0.4rem;
 }
 
 .workTitle {
 	user-select: text;
 	cursor: text;
+	text-align: start;
 }
 
 .pageTitle {
 	text-decoration: none;
 	cursor: pointer;
+	text-align: center;
 }
 
 .pageTitle h1 {
@@ -35,4 +38,10 @@
 
 .creditTitle {
 	font-size: 0.9rem;
+}
+
+.workTitleContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }

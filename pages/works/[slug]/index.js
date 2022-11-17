@@ -15,9 +15,18 @@ import { capitalizeFirstLetter, snakeCaseToText } from '../../../helpers'
 const getFormatted = (key) => capitalizeFirstLetter(snakeCaseToText(key))
 
 export default ({ work, about }) => {
-	const { title, description, technologies, credits, image, links, embed } =
-		work?.data?.attributes || {}
+	const {
+		title,
+		description,
+		technologies,
+		credits,
+		image,
+		links,
+		embed,
+		date,
+	} = work?.data?.attributes || {}
 	const format = image?.data?.attributes?.formats?.medium
+	const year = date.substring(0, 4)
 
 	const { withContribution, collaborators } = useMemo(() => {
 		return credits.reduce(
@@ -43,35 +52,36 @@ export default ({ work, about }) => {
 			<main className={indexStyles.main}>
 				<Link href="/" legacyBehavior passHref>
 					<a className={styles.pageTitle}>
-						<h1>{about.data.attributes.title}</h1>
+						<h2>{about.data.attributes.title}</h2>
 					</a>
 				</Link>
-				<div>
-					<h2 className={styles.workTitle}>{title}</h2>
-					{embed && <EmbedVideo link={embed} />}
-					{image.data && (
-						<Image
-							className={styles.image}
-							src={assetsUrl + format.url}
-							width={format.width}
-							height={format.height}
-							alt={image.alternativeText || ''}
-							priority={true}
-						/>
-					)}
-					<article className={styles.description}>
-						<ReactMarkdown>{description}</ReactMarkdown>
-					</article>
+				<div className={styles.workTitleContainer}>
+					<h1 className={styles.workTitle}>{title}</h1>
+					<div>{year}</div>
 				</div>
+				{embed && <EmbedVideo link={embed} />}
+				{image.data && (
+					<Image
+						className={styles.image}
+						src={assetsUrl + format.url}
+						width={format.width}
+						height={format.height}
+						alt={image.alternativeText || ''}
+						priority={true}
+					/>
+				)}
+				<article className={styles.description}>
+					<ReactMarkdown>{description}</ReactMarkdown>
+				</article>
 				{!!collaborators?.data?.length && (
 					<div className={styles.lists}>
 						<span className={styles.listTitle}>Collaborators: </span>
 						{collaborators.data.map((collaborator, index, { length }) => {
 							return (
-								<>
-									<Collaborator key={collaborator.id} {...{ collaborator }} />
-									{length > index + 1 && <span> | </span>}
-								</>
+								<span key={collaborator.id}>
+									<Collaborator {...{ collaborator }} />
+									{length > index + 1 && '|'}
+								</span>
 							)
 						})}
 					</div>

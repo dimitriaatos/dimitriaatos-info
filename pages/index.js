@@ -23,8 +23,8 @@ export default ({ about, categories, works }) => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<main className={styles.main}>
-				<h1>{title}</h1>
-				<div>
+				<h1 className={styles.pageTitle}>{title}</h1>
+				<div className={styles.centeredContainer}>
 					<Image
 						src={assetsUrl + thumbnail.url}
 						width={thumbnail.width}
@@ -42,10 +42,10 @@ export default ({ about, categories, works }) => {
 					<h2>Works</h2>
 					<Works {...{ categories, works, fallbackImage }} />
 				</div>
-				<div>
+				<div className={styles.centeredContainer}>
 					<a
-						href={assetsUrl + cv.url}
 						className={styles.cvButton}
+						href={assetsUrl + cv.url}
 						target="_blank"
 						rel="noreferrer"
 					>
@@ -89,7 +89,13 @@ export const getStaticProps = async () => {
 		props: {
 			about,
 			categories,
-			works,
+			works: {
+				data: [...works.data].sort(
+					(a, b) =>
+						new Date(b.attributes.date).getTime() -
+						new Date(a.attributes.date).getTime()
+				),
+			},
 		},
 	}
 }

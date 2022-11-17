@@ -7,6 +7,7 @@ const GET_WORKS = gql`
 				id
 				attributes {
 					title
+					date
 					cover {
 						data {
 							attributes {
@@ -34,6 +35,7 @@ const GET_WORK_BY_SLUG = gql`
 				data {
 					attributes {
 						title
+						date
 						description
 						embed
 						technologies {

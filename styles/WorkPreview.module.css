@@ -16,14 +16,6 @@
 	margin-bottom: 0.5rem;
 	border: 1px solid lightgray;
 	box-shadow: inset;
-	opacity: 1;
-	transition: opacity 200ms;
-}
-
-@media (hover: hover) {
-	.image:hover {
-		opacity: 0.8;
-	}
 }
 
 .title {

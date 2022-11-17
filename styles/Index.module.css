@@ -6,6 +6,11 @@
 	min-height: 100vh;
 }
 
+.centeredContainer {
+	display: flex;
+	justify-content: center;
+}
+
 .photo {
 	border-radius: 50%;
 }
@@ -23,10 +28,6 @@
 .main > * {
 	margin-bottom: 1rem;
 	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
 }
 
 .cvButton {
@@ -37,6 +38,12 @@
 	border: 0.1rem solid var(--cv-button-color);
 	padding: 0.5rem;
 	border-radius: 0.2rem;
-	justify-self: flex-end;
-	text-decoration: none;
+}
+
+.main h2 {
+	margin-bottom: 0.4rem;
+}
+
+.pageTitle {
+	text-align: center;
 }

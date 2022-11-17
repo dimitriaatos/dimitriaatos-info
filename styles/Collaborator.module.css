@@ -1,15 +1,6 @@
+.collaborator,
 .collaboratorButton {
-	/* background-color: lightgray;
-	border-radius: 0.2rem;
-	padding: 0.2rem;
-	margin: 0.1rem; */
+	margin: 0 0.4rem;
+	margin-bottom: 0.2rem;
 	white-space: nowrap;
-	margin: 0 0.2rem;
-}
-
-.collaborator {
-	padding: 0.2rem 0;
-	margin: 0.1rem 0;
-
-	/* white-space: nowrap; */
 }

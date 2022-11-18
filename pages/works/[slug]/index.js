@@ -96,19 +96,16 @@ export default ({ work, about }) => {
 							} = credit.contribution.data
 							return (
 								<li key={contributionId}>
-									<span
-										className={styles.creditTitle}
-									>{`${capitalizeFirstLetter(title)}: `}</span>
+									<span className={styles.creditTitle}>
+										{`${capitalizeFirstLetter(title)}: `}
+									</span>
 									{credit.collaborators.data.map(
 										(collaborator, index, { length }) => {
 											return (
-												<>
-													<Collaborator
-														key={collaborator.id}
-														{...{ collaborator }}
-													/>
-													{length != index + 1 && <span> / </span>}
-												</>
+												<span key={collaborator.id}>
+													<Collaborator {...{ collaborator }} />
+													{length != index + 1 && <span>/</span>}
+												</span>
 											)
 										}
 									)}

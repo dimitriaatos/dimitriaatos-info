@@ -9,3 +9,9 @@
 .contact a {
 	border-bottom: 1px solid black;
 }
+
+.email {
+	user-select: text;
+	display: block;
+	text-align: center;
+}

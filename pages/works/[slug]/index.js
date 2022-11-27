@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { assetsUrl, graphqlUri } from '../../../constants'
+import { assetsUrl, graphqlUri } from '../../../js/constants'
 import indexStyles from '../../../styles/Index.module.css'
 import styles from '../../../styles/Work.module.css'
 import ReactMarkdown from 'react-markdown'
@@ -10,7 +10,7 @@ import Image from 'next/image'
 import { GET_ABOUT, GET_WORKS, GET_WORK_BY_SLUG } from '../../../graphql'
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 import Collaborator from '../../../components/Collaborator'
-import { capitalizeFirstLetter, snakeCaseToText } from '../../../helpers'
+import { capitalizeFirstLetter, snakeCaseToText } from '../../../js/helpers'
 
 const getFormatted = (key) => capitalizeFirstLetter(snakeCaseToText(key))
 

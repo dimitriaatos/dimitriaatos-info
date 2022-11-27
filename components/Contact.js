@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { charShift } from '../helpers'
+import { charShift } from '../js/helpers'
 import styles from '../styles/Contact.module.css'
 
 export default ({ contact }) => {

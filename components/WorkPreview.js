@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../styles/WorkPreview.module.css'
-import { assetsUrl } from '../constants'
+import { assetsUrl } from '../js/constants'
 
 export default ({ work, fallbackImage }) => {
 	const { title, slug, cover } = work.attributes

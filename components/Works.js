@@ -1,12 +1,10 @@
 import WorkPreview from './WorkPreview'
 import styles from '../styles/Works.module.css'
-import { useState } from 'react'
+import { useContext } from 'react'
+import { UIContext } from '../js/context'
 
 export default ({ works, categories, fallbackImage }) => {
-	const [selectedCategories, setSelectedCategories] = useState({
-		state: null,
-		filtered: [...works.data],
-	})
+	const { selectedCategories, setSelectedCategories } = useContext(UIContext)
 
 	const filterWorks = (category = {}) => {
 		setSelectedCategories((prev) => {

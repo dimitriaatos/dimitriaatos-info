@@ -14,7 +14,7 @@
 	max-height: 200px;
 	object-fit: cover;
 	margin-bottom: 0.5rem;
-	border: 1px solid lightgray;
+	border: 1px solid var(--border-color);
 	box-shadow: inset;
 }
 

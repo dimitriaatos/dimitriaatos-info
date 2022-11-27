@@ -6,7 +6,7 @@ export default ({ children, onClose, open }) => {
 		document.addEventListener('keydown', (event) => {
 			if (event.key == 'Escape') onClose()
 		})
-	}, [])
+	}, [onClose])
 
 	if (!open) return null
 

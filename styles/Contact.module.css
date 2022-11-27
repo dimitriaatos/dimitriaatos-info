@@ -7,11 +7,15 @@
 }
 
 .contact a {
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid var(--main-color);
+}
+
+.emailContainer {
+	user-select: none;
+	display: block;
+	text-align: center;
 }
 
 .email {
 	user-select: text;
-	display: block;
-	text-align: center;
 }

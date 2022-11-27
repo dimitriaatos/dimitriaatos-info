@@ -31,11 +31,9 @@
 }
 
 .cvButton {
-	--cv-button-color: rgb(71 92 224);
-
-	color: var(--cv-button-color);
+	color: var(--accent-color);
 	font-size: 1rem;
-	border: 0.1rem solid var(--cv-button-color);
+	border: 0.1rem solid var(--accent-color);
 	padding: 0.5rem;
 	border-radius: 0.2rem;
 	user-select: none;

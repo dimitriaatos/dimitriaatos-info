@@ -28,9 +28,14 @@
 }
 
 .categoryButton {
-	border: 0.1rem gray solid;
-	color: gray;
-	background-color: white;
+	--category-color: rgb(125 125 125);
+	--category-bg-color: var(--bg-color);
+
+	border-width: 0.1rem;
+	border-style: solid;
+	border-color: var(--category-color);
+	color: var(--category-color);
+	background-color: var(--category-bg-color);
 	padding: 0.5rem;
 	cursor: pointer;
 	border-radius: 2rem;
@@ -41,8 +46,8 @@
 }
 
 .categoryButtonSelected {
-	color: white;
-	background-color: gray;
+	color: var(--category-bg-color);
+	background-color: var(--category-color);
 }
 
 @media (hover: hover) {
@@ -53,5 +58,21 @@
 	.categoryButtonSelected:hover {
 		background-color: rgb(151 151 151);
 		border-color: rgb(151 151 151);
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	.categoryButton {
+		--category-color: var(--main-color);
+		--category-bg-color: rgb(68 68 68);
+	}
+
+	.categoryButton:hover {
+		background-color: rgb(92 92 92);
+	}
+
+	.categoryButtonSelected:hover {
+		background-color: rgb(170 170 170);
+		border-color: rgb(170 170 170);
 	}
 }

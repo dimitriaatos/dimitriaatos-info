@@ -21,10 +21,22 @@ const branch = child
 
 app.use(bodyParser.json())
 
+const commands = {
+	pull: 'git pull',
+	build: 'npm run build',
+	restart: 'pm2 restart dimitriaatos',
+}
+
 app.use('/github', webhookHandler.middleware, (req, res) => {
 	if (path.parse(req.body.ref).name == branch) {
-		child.exec('git pull && npm run build && pm2 restart dimitriaatos')
+		child.exec(Object.values(commands).join(' && '))
 	}
+	res.status(200).end()
+})
+
+app.post('/strapi', (req, res) => {
+	const { build, restart } = commands
+	child.exec([build, restart].join(' && '))
 	res.status(200).end()
 })
 

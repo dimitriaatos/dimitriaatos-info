@@ -114,10 +114,10 @@ export default ({ work, about }) => {
 						})}
 					</ul>
 				)}
-				{!!technologies.length && (
+				{!!technologies.data.length && (
 					<div style={{ textAlign: 'left', display: 'block' }}>
 						<span className={styles.listTitle}>Technologies used: </span>
-						{technologies
+						{technologies.data
 							.map((technology) => technology.attributes.title)
 							.join(', ')}
 					</div>

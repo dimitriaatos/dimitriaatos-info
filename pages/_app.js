@@ -21,7 +21,13 @@ function App({ Component, pageProps }) {
 							href={`/favicon-${size}x${size}.png`}
 						/>
 					))}
-					<link rel="mask-icon" href="/favicon.svg" color="#ffffff" />
+					<link
+						rel="mask-icon"
+						type="image/svg+xml"
+						href="/favicon.svg"
+						color="#ffffff"
+					/>
+					<link rel="icon" href="/favicon.ico" />
 				</Head>
 				<Component {...pageProps} />
 			</>

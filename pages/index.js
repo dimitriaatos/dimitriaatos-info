@@ -20,7 +20,6 @@ export default ({ about, categories, works }) => {
 			<Head>
 				<title>{title}</title>
 				<meta name="description" content={description} />
-				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<main className={styles.main}>
 				<h1 className={styles.pageTitle}>{title}</h1>

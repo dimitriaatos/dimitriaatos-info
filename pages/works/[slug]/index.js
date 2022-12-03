@@ -47,7 +47,6 @@ export default ({ work, about }) => {
 			<Head>
 				<title>{`${title} - ${about.data.attributes.title}`}</title>
 				<meta name="description" content={description} />
-				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<main className={indexStyles.main}>
 				<Link href="/" legacyBehavior passHref>

@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
-		"start": "concurrently \"next start\" \"node ./webhooks/index.mjs\"",
+		"start": "concurrently \"next build\" \"next start\"",
 		"lint": "next lint"
 	},
 	"dependencies": {

@@ -9,10 +9,12 @@ const PORT = process.env.WEBHOOK_PORT
 
 app.use(bodyParser.json())
 
-const commands = {
-	build: 'npm run build',
-	restart: 'pm2 restart dimitriaatos',
-}
+const commands = [
+	'git pull',
+	'npm i',
+	'npm run build',
+	'pm2 restart dimitriaatos',
+]
 
 app.post('/strapi', (req, res) => {
 	child.exec(commands.join(' && '))

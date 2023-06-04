@@ -9,7 +9,7 @@ const nextConfig = {
 		remotePatterns: [
 			{
 				protocol: 'https',
-				hostname: 'cms.dimitriaatos.info',
+				hostname: 'dimitriaatos.info',
 				port: '',
 				pathname: '/uploads/**',
 			},

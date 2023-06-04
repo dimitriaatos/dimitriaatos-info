@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { assetsUrl, graphqlUri } from '../../../js/constants'
 import indexStyles from '../../../styles/Index.module.css'
 import styles from '../../../styles/Work.module.css'
 import ReactMarkdown from 'react-markdown'
@@ -14,7 +13,7 @@ import { capitalizeFirstLetter, snakeCaseToText } from '../../../js/helpers'
 
 const getFormatted = (key) => capitalizeFirstLetter(snakeCaseToText(key))
 
-export default ({ work, about }) => {
+export default ({ work, about, siteUri }) => {
 	const {
 		title,
 		description,
@@ -62,7 +61,7 @@ export default ({ work, about }) => {
 				{image.data && (
 					<Image
 						className={styles.image}
-						src={assetsUrl + format.url}
+						src={siteUri + format.url}
 						width={format.width}
 						height={format.height}
 						alt={image.alternativeText || ''}
@@ -144,7 +143,7 @@ export default ({ work, about }) => {
 
 export const getStaticProps = async (context) => {
 	const client = new ApolloClient({
-		uri: graphqlUri,
+		uri: `${process.env.SITE_URI}/graphql`,
 		cache: new InMemoryCache(),
 	})
 
@@ -167,13 +166,14 @@ export const getStaticProps = async (context) => {
 		props: {
 			work,
 			about,
+			siteUri: process.env.SITE_URI,
 		},
 	}
 }
 
 export const getStaticPaths = async () => {
 	const client = new ApolloClient({
-		uri: graphqlUri,
+		uri: `${process.env.SITE_URI}/graphql`,
 		cache: new InMemoryCache(),
 	})
 

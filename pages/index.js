@@ -2,13 +2,12 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Works from '../components/Works'
 import styles from '../styles/Index.module.css'
-import { assetsUrl, graphqlUri } from '../js/constants'
 import ReactMarkdown from 'react-markdown'
 import Contact from '../components/Contact'
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 import { GET_ABOUT, GET_CATEGORIES, GET_WORKS } from '../graphql/index'
 
-export default ({ about, categories, works }) => {
+export default ({ about, categories, works, siteUri }) => {
 	const { title, description, contact } = about.data.attributes
 	const photo = about.data.attributes.photo.data.attributes
 	const fallbackImage = about.data.attributes.fallbackImage.data.attributes
@@ -25,7 +24,7 @@ export default ({ about, categories, works }) => {
 				<h1 className={styles.pageTitle}>{title}</h1>
 				<div className={styles.centeredContainer}>
 					<Image
-						src={assetsUrl + thumbnail.url}
+						src={siteUri + thumbnail.url}
 						width={thumbnail.width}
 						height={thumbnail.height}
 						alt={photo.alternativeText}
@@ -39,12 +38,12 @@ export default ({ about, categories, works }) => {
 				</div>
 				<div>
 					<h2 style={{ userSelect: 'none' }}>Works</h2>
-					<Works {...{ categories, works, fallbackImage }} />
+					<Works {...{ categories, works, fallbackImage, siteUri }} />
 				</div>
 				<div className={styles.centeredContainer}>
 					<a
 						className={styles.cvButton}
-						href={assetsUrl + cv.url}
+						href={siteUri + cv.url}
 						target="_blank"
 						rel="noreferrer"
 					>
@@ -62,7 +61,7 @@ export default ({ about, categories, works }) => {
 
 export const getStaticProps = async () => {
 	const client = new ApolloClient({
-		uri: graphqlUri,
+		uri: `${process.env.SITE_URI}/graphql`,
 		cache: new InMemoryCache(),
 	})
 
@@ -95,6 +94,7 @@ export const getStaticProps = async () => {
 						new Date(a.attributes.date).getTime()
 				),
 			},
+			siteUri: process.env.SITE_URI,
 		},
 	}
 }

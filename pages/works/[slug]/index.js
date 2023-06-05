@@ -13,7 +13,7 @@ import { capitalizeFirstLetter, snakeCaseToText } from '../../../js/helpers'
 
 const getFormatted = (key) => capitalizeFirstLetter(snakeCaseToText(key))
 
-export default ({ work, about, siteUri }) => {
+export default ({ work, about, contentUri }) => {
 	const {
 		title,
 		description,
@@ -61,7 +61,7 @@ export default ({ work, about, siteUri }) => {
 				{image.data && (
 					<Image
 						className={styles.image}
-						src={siteUri + format.url}
+						src={contentUri + format.url}
 						width={format.width}
 						height={format.height}
 						alt={image.alternativeText || ''}
@@ -143,7 +143,7 @@ export default ({ work, about, siteUri }) => {
 
 export const getStaticProps = async (context) => {
 	const client = new ApolloClient({
-		uri: `${process.env.SITE_URI}/graphql`,
+		uri: `${process.env.CMS_URI}/graphql`,
 		cache: new InMemoryCache(),
 	})
 
@@ -166,14 +166,14 @@ export const getStaticProps = async (context) => {
 		props: {
 			work,
 			about,
-			siteUri: process.env.SITE_URI,
+			contentUri: process.env.CMS_URI,
 		},
 	}
 }
 
 export const getStaticPaths = async () => {
 	const client = new ApolloClient({
-		uri: `${process.env.SITE_URI}/graphql`,
+		uri: `${process.env.CMS_URI}/graphql`,
 		cache: new InMemoryCache(),
 	})
 

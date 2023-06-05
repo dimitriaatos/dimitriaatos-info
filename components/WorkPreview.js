@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../styles/WorkPreview.module.css'
 
-export default ({ work, fallbackImage, siteUri }) => {
+export default ({ work, fallbackImage, contentUri }) => {
 	const { title, slug, cover } = work.attributes
 	const image = cover || fallbackImage
 
@@ -14,7 +14,7 @@ export default ({ work, fallbackImage, siteUri }) => {
 			<button className={styles.container}>
 				<Image
 					className={styles.image}
-					src={siteUri + thumbnail.url}
+					src={contentUri + thumbnail.url}
 					width={thumbnail.width}
 					height={thumbnail.height}
 					alt={image.alternativeText || ''}

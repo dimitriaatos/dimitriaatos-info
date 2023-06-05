@@ -3,7 +3,7 @@ import styles from '../styles/Works.module.css'
 import { useContext } from 'react'
 import { UIContext } from '../js/context'
 
-export default ({ works, categories, fallbackImage, siteUri }) => {
+export default ({ works, categories, fallbackImage, contentUri }) => {
 	const { selectedCategories, setSelectedCategories } = useContext(UIContext)
 
 	const filterWorks = (category = {}) => {
@@ -63,7 +63,7 @@ export default ({ works, categories, fallbackImage, siteUri }) => {
 				).map((work) => {
 					return (
 						<li key={work.id}>
-							<WorkPreview {...{ fallbackImage, work, siteUri }} />
+							<WorkPreview {...{ fallbackImage, work, contentUri }} />
 						</li>
 					)
 				})}

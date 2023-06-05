@@ -1,3 +1,6 @@
+const { URL } = require('node:url')
+const { protocol, hostname, port, pathname } = new URL(process.env.CMS_URI)
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: true,
@@ -8,10 +11,10 @@ const nextConfig = {
 	images: {
 		remotePatterns: [
 			{
-				protocol: 'https',
-				hostname: 'dimitriaatos.info',
-				port: '',
-				pathname: '/uploads/**',
+				protocol: protocol.replace(':', ''),
+				hostname,
+				port,
+				pathname: `${pathname}/uploads/**`,
 			},
 		],
 	},

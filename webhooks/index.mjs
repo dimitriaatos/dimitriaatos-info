@@ -1,23 +1,18 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import child from 'child_process'
-import * as dotenv from 'dotenv'
+import { loadEnvConfig } from '@next/env'
+loadEnvConfig(process.cwd())
 
-dotenv.config()
 const app = express()
 const PORT = process.env.WEBHOOK_PORT
 
 app.use(bodyParser.json())
 
-const commands = [
-	'git pull',
-	'npm i',
-	'npm run build',
-	'pm2 restart dimitriaatos',
-]
-
 app.post('/strapi', (req, res) => {
-	child.exec(commands.join(' && '))
+	child.exec(
+		'source ~/.nvm/nvm.sh && npm run build && pm2 reload ecosystem.config.cjs --env production'
+	)
 	res.status(200).end()
 })
 

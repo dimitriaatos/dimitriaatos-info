@@ -1,7 +1,7 @@
 {
 	"editor.codeActionsOnSave": {
-		"editor.formatOnSave": true,
-		"source.fixAll.eslint": true,
-		"source.fixAll.stylelint": true
+		"editor.formatOnSave": "explicit",
+		"source.fixAll.eslint": "explicit",
+		"source.fixAll.stylelint": "explicit"
 	}
 }

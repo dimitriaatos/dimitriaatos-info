@@ -5,7 +5,7 @@ module.exports = {
 	apps: [
 		{
 			name: 'dimitriaatos',
-			script: 'npm start && node webhook/index.mjs',
+			script: 'concurrently "npm:start" "npm:webhook"',
 			env_production,
 		},
 	],

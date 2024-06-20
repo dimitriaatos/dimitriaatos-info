@@ -5,7 +5,7 @@ module.exports = {
 	apps: [
 		{
 			name: 'dimitriaatos',
-			script: 'concurrently "npm:start" "npm:webhook"',
+			script: 'concurrently "pnpm:start" "pnpm:webhook"',
 			env_production,
 		},
 	],
@@ -20,7 +20,7 @@ module.exports = {
 			'pre-deploy-local':
 				'rsync -v ./.env.production.local dimitriaatos@grain:/home/dimitriaatos/sites/dimitriaatos/front/current/',
 			'post-deploy':
-				'source ~/.nvm/nvm.sh && npm install && npm run build && npm run sitemap && pm2 reload ecosystem.config.cjs --env production',
+				'source ~/.nvm/nvm.sh && pnpm install && pnpm build && pnpm sitemap && pm2 reload ecosystem.config.cjs --env production',
 			'ssh-options': 'ForwardAgent=yes',
 		},
 	},
